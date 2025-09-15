@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth"
+  x-data="{
+    lightMode: false,
+    activeDiv: 'Mobile Legends',
+    divisions: ['Mobile Legends', 'Valorant', 'PUBG Mobile', 'Free Fire', 'Call of Duty Mobile'],
+    players: {
+      'Mobile Legends': [
+        { role: 'Coach', ign: 'MAPE', name: 'Domingos Ramos', age: 33, ig: 'elmape12', photo: 'img/coach.png' },
+        { role: 'Player', ign: 'JIGGAA', name: 'Albert Cardoso', age: 22, ig: 'sir.jiggaaa', photo: 'img/jiggaa.png' },
+        { role: 'Player', ign: 'VASCO', name: 'Vasco Varela', age: 24, ig: 'vvarela', photo: 'img/vasco.png' },
+        { role: 'Player', ign: 'ROLAND VII', name: 'Rolandinho', age: 24, ig: 'rolandvii', photo: 'img/rolandvii.png' },
+        { role: 'Player', ign: 'HUNTER', name: 'Jo Hunter', age: 17, ig: 'johunter', photo: 'img/hunter.png' },
+        { role: 'Player', ign: 'CLYDE', name: 'Ze Granadeiro', age: 25, ig: 'zegranadeiro', photo: 'img/clyde.png' },
+        { role: 'Player', ign: 'PHELUN', name: 'Domingos Lopes', age: 28, ig: 'miku', photo: 'img/phelun.png' },
+        { role: 'Player', ign: 'NOBSKIEE', name: 'Nobel Gusmao', age: 23, ig: 'nobskieeeee', photo: 'img/nobskiee.png' }
+      ],
+      'Valorant': [
+        { ign: 'V_Deadshot', name: 'Budi Santoso', age: 24, ig: 'deadshot_val', photo: 'https://randomuser.me/api/portraits/men/11.jpg' },
+        { ign: 'SharpShooter', name: 'Dewi Lestari', age: 23, ig: 'sharp_val', photo: 'https://randomuser.me/api/portraits/women/21.jpg' },
+        { ign: 'AgentZero', name: 'Roni Saputra', age: 22, ig: 'agent_val', photo: 'https://randomuser.me/api/portraits/men/36.jpg' },
+        { ign: 'Flash', name: 'Tari Oktavia', age: 20, ig: 'flash_val', photo: 'https://randomuser.me/api/portraits/women/37.jpg' },
+        { ign: 'Phantom', name: 'Andika Nugraha', age: 23, ig: 'phantom_val', photo: 'https://randomuser.me/api/portraits/men/38.jpg' }
+      ],
+      'PUBG Mobile': [
+        { ign: 'PUBG_Killer', name: 'Rizky Fauzan', age: 25, ig: 'killer_pubg', photo: 'https://randomuser.me/api/portraits/men/12.jpg' },
+        { ign: 'Ace', name: 'Maya Sari', age: 21, ig: 'ace_pubg', photo: 'https://randomuser.me/api/portraits/women/22.jpg' },
+        { ign: 'SniperX', name: 'Alvin Putra', age: 23, ig: 'sniperx_pubg', photo: 'https://randomuser.me/api/portraits/men/39.jpg' },
+        { ign: 'Runner', name: 'Citra Dewi', age: 22, ig: 'runner_pubg', photo: 'https://randomuser.me/api/portraits/women/40.jpg' },
+        { ign: 'Boomer', name: 'Doni Lesmana', age: 24, ig: 'boomer_pubg', photo: 'https://randomuser.me/api/portraits/men/41.jpg' }
+      ],
+      'Free Fire': [
+        { ign: 'FF_Ranger', name: 'Agus Wijaya', age: 22, ig: 'ranger_ff', photo: 'https://randomuser.me/api/portraits/men/13.jpg' },
+        { ign: 'Blaze', name: 'Lina Putri', age: 20, ig: 'blaze_ff', photo: 'https://randomuser.me/api/portraits/women/23.jpg' },
+        { ign: 'JetFire', name: 'Ilham Yuda', age: 23, ig: 'jetfire_ff', photo: 'https://randomuser.me/api/portraits/men/42.jpg' },
+        { ign: 'Phoenix', name: 'Sari Rahma', age: 21, ig: 'phoenix_ff', photo: 'https://randomuser.me/api/portraits/women/43.jpg' },
+        { ign: 'Echo', name: 'Bayu Aditya', age: 24, ig: 'echo_ff', photo: 'https://randomuser.me/api/portraits/men/44.jpg' }
+      ],
+      'Call of Duty Mobile': [
+        { ign: 'COD_Sniper', name: 'Hendra Gunawan', age: 26, ig: 'sniper_cod', photo: 'https://randomuser.me/api/portraits/men/14.jpg' },
+        { ign: 'Ghost', name: 'Rina Wulandari', age: 24, ig: 'ghost_cod', photo: 'https://randomuser.me/api/portraits/women/24.jpg' },
+        { ign: 'TankX', name: 'Yusuf Ibrahim', age: 23, ig: 'tankx_cod', photo: 'https://randomuser.me/api/portraits/men/45.jpg' },
+        { ign: 'Falcon', name: 'Cindy Melati', age: 21, ig: 'falcon_cod', photo: 'https://randomuser.me/api/portraits/women/46.jpg' },
+        { ign: 'Laser', name: 'Tommy Ruslan', age: 25, ig: 'laser_cod', photo: 'https://randomuser.me/api/portraits/men/47.jpg' }
+      ]
+    }
+  }"
+  :class="{ 'bg-white text-gray-900': lightMode, 'bg-gray-900 text-white': !lightMode }">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Divisions – Beautiful Nightmare</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(234, 179, 8, 0.3);
+      z-index: 9999;
+    }
+
+    #progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <header :class="lightMode ? 'bg-gray-100' : 'bg-gray-800'" class="sticky top-0 z-50 shadow">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpeg" alt="Logo Team Beautiful Nightmare" class="w-12 h-12 rounded-full" />
+        <h1 :class="lightMode ? 'text-gray-900' : 'text-white'" class="text-2xl font-bold">Beautiful Nightmare</h1>
+      </div>
+      <nav class="space-x-6 text-lg" :class="lightMode ? 'text-gray-900' : 'text-white'">
+        <a href="index.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'" class="transition">Home</a>
+        <a href="about.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'" class="transition">About</a>
+        <a href="divisions.html" :class="lightMode ? 'text-orange-600 font-semibold' : 'text-orange-400 font-semibold'">Divisions</a>
+        <a href="contact.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'" class="transition">Contact</a>
+      </nav>
+      <button @click="lightMode = !lightMode" class="ml-4 p-2 rounded-full border border-orange-500 hover:bg-orange-500 hover:text-white transition text-sm flex items-center justify-center" title="Toggle Dark/Light Mode">
+        <template x-if="!lightMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8.66-10h-1M4.34 12h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728l-.707-.707M6.343 17.657l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" /></svg>
+        </template>
+        <template x-if="lightMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0112.21 3c0-.14 0-.28.01-.42A7 7 0 1019 15.18c-.14.01-.28.01-.42.01z" /></svg>
+        </template>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-6" :class="lightMode ? 'text-gray-900' : 'text-white'">
+    <section class="text-center my-12" data-aos="fade-up">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-4">
+        <span class="text-orange-500">Beautiful Nightmare</span> Division Team
+      </h2>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto" :class="lightMode ? 'text-gray-600' : 'text-gray-400'">
+        We have a dedicated division for some of the most popular games in the world of e-sports.
+      </p>
+    </section>
+
+    <section class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-right">
+      <template x-for="division in divisions" :key="division">
+        <button
+          @click="activeDiv = division"
+          :class="{
+            'bg-orange-500 text-white scale-105 shadow-lg': activeDiv === division,
+            'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:scale-105 hover:shadow': activeDiv !== division
+          }"
+          class="px-4 py-2 rounded transition-all duration-300 ease-in-out transform"
+          x-text="division"
+        ></button>
+      </template>
+    </section>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8" data-aos="fade-up" data-aos-duration="800" :key="activeDiv">
+      <template x-for="player in players[activeDiv]" :key="player.ign">
+        <div
+          class="rounded-lg p-5 shadow-lg transition transform hover:scale-105 hover:shadow-orange-500"
+          :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <img :src="player.photo" :alt="`Foto ${player.name}`" class="w-24 h-24 mx-auto object-cover mb-4 border-4 border-orange-500 rounded-md" />
+          <h3 class="text-xl font-semibold mb-1" x-text="player.ign"></h3>
+          <p class="mb-1 text-sm italic" x-show="player.role" x-text="player.role"></p>
+          <p class="mb-1"><strong>Name:</strong> <span x-text="player.name"></span></p>
+          <p class="mb-1"><strong>Age:</strong> <span x-text="player.age"></span> years old</p>
+          <p><strong>Instagram:</strong> <a :href="`https://instagram.com/${player.ig}`" target="_blank" class="text-orange-400 hover:text-orange-600 transition" x-text="`@${player.ig}`"></a></p>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <footer :class="lightMode ? 'bg-gray-100 text-gray-600' : 'bg-gray-800 text-gray-400'" class="p-4 text-center space-y-2">
+  <div>
+    &copy; 2025 Team Beautiful Nightmare. All rights reserved.
+  </div>
+  <div class="text-sm">
+    Powered by <a href="https://github.com/beautifulnightmare" target="_blank" class="text-orange-400 hover:text-orange-600 transition">Beautiful Nightmare Dev Team</a>
+  </div>
+  <div class="flex justify-center space-x-4 text-xl">
+    <a href="https://instagram.com/beautifulnightmare" target="_blank" class="hover:text-orange-500 transition">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://youtube.com/@beautifulnightmare" target="_blank" class="hover:text-orange-500 transition">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    };
+  </script>
+</body>
+
+</html>

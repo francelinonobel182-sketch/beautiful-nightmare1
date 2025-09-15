@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home – Beautiful Nightmare</title>
+
+  <!-- Tailwind CSS dengan konfigurasi dark mode 'class' -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- FontAwesome untuk ikon sosial -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+   <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-bxKzLq7BaJ25AaFa04DnBzDEf9R9oTfV8+4nZ1LHEaPvo96ZK4Obug8N4VuuvRUvY1mIl+e/3tqf2d1os3U1Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Alpine.js untuk toggle dark mode -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    /* Progress Bar */
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(156, 163, 175, 0.3); /* gray-400 */
+      z-index: 9999;
+    }
+    #progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ea580c); /* orange gradient */
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+  </style>
+</head>
+<body
+  x-data="{
+    darkMode: localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches,
+    toggle() {
+      this.darkMode = !this.darkMode;
+      localStorage.setItem('darkMode', this.darkMode);
+    }
+  }"
+  :class="{ 'dark': darkMode }"
+  class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-500 scroll-smooth"
+>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <header class="bg-gray-100 dark:bg-gray-800 shadow">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpeg" alt="Logo" class="w-12 h-12 rounded-full" />
+        <h1 class="text-2xl font-bold">Beautiful Nightmare</h1>
+      </div>
+      <nav class="space-x-6 text-lg">
+        <a href="index.html" class="text-orange-500 font-semibold">Home</a>
+        <a href="about.html" class="hover:text-orange-500 transition">About</a>
+        <a href="divisions.html" class="hover:text-orange-500 transition">Divisions</a>
+        <a href="contact.html" class="hover:text-orange-500 transition">Contact</a>
+      </nav>
+      <button
+        @click="toggle()"
+        aria-label="Toggle Dark Mode"
+        class="ml-4 p-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+      >
+        <template x-if="!darkMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.36 5.36l-.7-.7M6.34 6.34l-.7-.7m12.02 12.02l-.7-.7M6.34 17.66l-.7-.7M12 7a5 5 0 100 10 5 5 0 000-10z" />
+          </svg>
+        </template>
+        <template x-if="darkMode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+          </svg>
+        </template>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-6">
+
+    <!-- Hero Section -->
+<section class="text-center my-12" data-aos="fade-up">
+  <h2 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+    Welcome to <br />
+    <span class="text-orange-500 text-8xl md:text-10xl block mt-2">BEAUTIFUL NIGHTMARE</span>
+  </h2>
+  <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+    A professional e-sports team that competes at national and international levels with high passion and dedication.
+  </p>
+</section>
+
+
+    <!-- Tentang Kami Singkat -->
+    <section class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-3xl font-bold mb-4 text-orange-500">ABOUT US</h3>
+      <p class="text-gray-700 dark:text-gray-300 text-lg">
+        Beautiful Nightmare is committed to developing young esports talent and shining Timor-Leste's name on the national and international stage. We believe that hard work, team spirit, and dedication are the keys to success.
+      </p>
+    </section>
+
+    <!-- Highlights -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-6 my-16" data-aos="fade-up" data-aos-delay="200">
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">2015</h3>
+        <p>Established</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">5</h3>
+        <p>Gaming Division</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">30+</h3>
+        <p>Professional Player</p>
+      </div>
+      <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition duration-300">
+        <h3 class="text-2xl font-semibold mb-2">120+</h3>
+        <p>Achievements</p>
+      </div>
+    </section>
+
+    <!-- Divisi Utama dengan Logo -->
+    <section class="my-16" data-aos="fade-up" data-aos-delay="300">
+      <h3 class="text-3xl font-bold mb-6 text-center text-orange-500">Our Main Division</h3>
+      <div class="flex justify-center gap-10 flex-wrap">
+        <div class="text-center max-w-[120px]">
+          <img src="ml.png" alt="Mobile Legends" class="mx-auto mb-2" />
+          <p>Mobile Legends</p>
+        </div>
+        <div class="text-center max-w-[120px]">
+          <img src="valorant.png" alt="Valorant" class="mx-auto mb-2" />
+          <p>Valorant</p>
+        </div>
+        <div class="text-center max-w-[120px]">
+          <img src="pubgm.png" alt="PUBG Mobile" class="mx-auto mb-2" />
+          <p>PUBG Mobile</p>
+        </div>
+        <div class="text-center max-w-[120px]">
+          <img src="ff.png" alt="Free Fire" class="mx-auto mb-2" />
+          <p>Free Fire</p>
+        </div>
+        <div class="text-center max-w-[120px]">
+          <img src="codm.png" alt="Call of Duty Mobile" class="mx-auto mb-2" />
+          <p>Call of Duty Mobile</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni Pemain -->
+    <section class="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-lg my-16 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+      <h3 class="text-2xl font-semibold mb-4">Player Testimonials</h3>
+      <blockquote class="italic text-gray-700 dark:text-gray-300">
+        “Joining Beautiful Nightmare gave me the opportunity to develop and achieve success at an international level.” — <strong>Nino</strong>
+      </blockquote>
+    </section>
+
+    <!-- Media Sosial -->
+    <section class="my-16 text-center" data-aos="fade-up" data-aos-delay="500">
+      <h3 class="text-3xl font-bold mb-6 text-orange-500">Follow Us on Social Media</h3>
+      <div class="flex justify-center space-x-8 text-orange-500 text-4xl">
+        <a href="#" aria-label="Instagram" class="hover:text-orange-600 transition">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" aria-label="YouTube" class="hover:text-orange-600 transition">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" aria-label="Twitch" class="hover:text-orange-600 transition">
+          <i class="fab fa-twitch"></i>
+        </a>
+        <a href="#" aria-label="Twitter" class="hover:text-orange-600 transition">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-100 dark:bg-gray-800 p-4 text-center text-gray-600 dark:text-gray-400">
+    &copy; 2025 Team Beautiful Nightmare. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    };
+  </script>
+
+</body>
+</html>

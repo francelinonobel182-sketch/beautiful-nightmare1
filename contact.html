@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth"
+  x-data="{ lightMode: false }"
+  :class="{ 'bg-white text-gray-900': lightMode, 'bg-gray-900 text-white': !lightMode }">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Beautiful Nightmare</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    /* Progress Bar */
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(234, 179, 8, 0.3); /* amber-400 transparent */
+      z-index: 9999;
+    }
+
+    #progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ea580c); /* orange */
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar-container" :class="{ 'bg-gray-300': lightMode, 'bg-yellow-400/30': !lightMode }">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header :class="lightMode ? 'bg-gray-100' : 'bg-gray-800'" class="sticky top-0 z-50 shadow">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpeg" alt="Logo" class="w-12 h-12 rounded-full" />
+        <h1 class="text-2xl font-bold" :class="lightMode ? 'text-gray-900' : 'text-white'">
+          Beautiful Nightmare
+        </h1>
+      </div>
+      <nav class="space-x-6 text-lg" :class="lightMode ? 'text-gray-900' : 'text-white'">
+        <a href="index.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">Home</a>
+        <a href="about.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">About</a>
+        <a href="divisions.html" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">Divisions</a>
+        <a href="contact.html" :class="lightMode ? 'text-orange-600 font-semibold' : 'text-orange-400 font-semibold'">Contact</a>
+      </nav>
+
+      <!-- Mode Toggle -->
+      <button 
+        @click="lightMode = !lightMode" 
+        class="ml-4 p-2 rounded-full border border-orange-500 hover:bg-orange-500 hover:text-white transition"
+        aria-label="Toggle Mode" title="Toggle Mode">
+        <template x-if="!lightMode">
+          <!-- Matahari Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m8.66-10h-1M4.34 12h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728l-.707-.707M6.343 17.657l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
+          </svg>
+        </template>
+        <template x-if="lightMode">
+          <!-- Bulan Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 0112.21 3c0-.14 0-.28.01-.42A7 7 0 1019 15.18c-.14.01-.28.01-.42.01z" />
+          </svg>
+        </template>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12" :class="lightMode ? 'text-gray-900' : 'text-white'">
+    <section class="max-w-xl mx-auto" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold mb-6 text-center">Contact Us</h2>
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="block mb-2 font-semibold">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full p-3 rounded border focus:outline-none"
+            :class="lightMode ? 'bg-white border-gray-300 focus:border-orange-500' : 'bg-gray-800 border-gray-700 focus:border-orange-400'"
+            placeholder="Enter Full Name"
+          />
+        </div>
+        <div>
+          <label for="email" class="block mb-2 font-semibold">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full p-3 rounded border focus:outline-none"
+            :class="lightMode ? 'bg-white border-gray-300 focus:border-orange-500' : 'bg-gray-800 border-gray-700 focus:border-orange-400'"
+            placeholder="Enter email"
+          />
+        </div>
+        <div>
+          <label for="message" class="block mb-2 font-semibold">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full p-3 rounded border focus:outline-none"
+            :class="lightMode ? 'bg-white border-gray-300 focus:border-orange-500' : 'bg-gray-800 border-gray-700 focus:border-orange-400'"
+            placeholder="Write your message here..."
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-orange-500 hover:bg-orange-600 transition font-semibold py-3 rounded text-white"
+        >
+          Send Message
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer :class="lightMode ? 'bg-gray-100 text-gray-600' : 'bg-gray-800 text-gray-400'" class="p-4 text-center">
+    &copy; 2025 Team Beautiful Nightmare. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    };
+  </script>
+</body>
+</html>

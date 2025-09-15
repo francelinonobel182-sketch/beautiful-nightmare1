@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth" x-data="{ lightMode: false }" :class="{ 'bg-white text-gray-900': lightMode, 'bg-gray-900 text-white': !lightMode }">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About – Beautiful Nightmare</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    /* Progress Bar */
+    #progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(234, 179, 8, 0.3); /* amber-400 with transparency */
+      z-index: 9999;
+    }
+    #progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ea580c); /* orange gradient */
+      width: 0%;
+      transition: width 0.25s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar-container" :class="{ 'bg-gray-300': lightMode, 'bg-yellow-400/30': !lightMode }">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header :class="lightMode ? 'bg-gray-100' : 'bg-gray-800'" class="sticky top-0 z-50 shadow">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpeg" alt="Logo Beautiful Nightmare" class="w-12 h-12 rounded-full" />
+        <h1 :class="lightMode ? 'text-gray-900' : 'text-white'" class="text-2xl font-bold">Beautiful Nightmare</h1>
+      </div>
+      <nav class="space-x-6 text-lg" :class="lightMode ? 'text-gray-900' : 'text-white'">
+        <a href="index.html" class="transition" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">Home</a>
+        <a href="about.html" class="transition font-semibold" :class="lightMode ? 'text-orange-600' : 'text-orange-400'">About</a>
+        <a href="divisions.html" class="transition" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">Divisions</a>
+        <a href="contact.html" class="transition" :class="lightMode ? 'hover:text-orange-600' : 'hover:text-orange-400'">Contact</a>
+      </nav>
+      <!-- Toggle Mode -->
+      <button @click="lightMode = !lightMode" class="ml-4 p-2 rounded-full border border-orange-500 hover:bg-orange-500 hover:text-white transition">
+        <template x-if="!lightMode">
+          <!-- icon matahari ketika light tidak aktif (jadi dipakai dark) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 3v1m0 16v1m8.66-10h-1M4.34 12h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728l-.707-.707M6.343 17.657l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+          </svg>
+        </template>
+        <template x-if="lightMode">
+          <!-- icon bulan ketika light aktif -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 0112.21 3c0-.14 0-.28.01-.42A7 7 0 1019 15.18c-.14.01-.28.01-.42.01z"/>
+          </svg>
+        </template>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-6 py-12" :class="lightMode ? 'text-gray-900' : 'text-white'">
+    
+    <!-- Video Profil Tim -->
+    <section class="text-center mb-16" data-aos="zoom-in">
+      <h2 class="text-4xl font-bold text-orange-500 mb-4">Gameplay Highlights Video</h2>
+      <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg">
+        <iframe class="w-full h-96 rounded-lg"
+                src="https://www.youtube.com/embed/q2qmuobRQE0?si=kfXOf03yPedJcTMa"
+                title="Profil Tim"
+                allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Visi dan Misi -->
+    <section data-aos="fade-up" class="mb-16">
+      <h2 class="text-4xl font-bold text-orange-500 mb-6 text-center">Vision & Mission</h2>
+      <div class="space-y-4 max-w-2xl mx-auto text-center">
+        <details class="bg-gray-800 rounded-md p-4 cursor-pointer hover:shadow-md transition" :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <summary class="text-4xl font-semibold text-orange-400">Vision</summary>
+          <p class="mt-2">To become the leading e-sports team from Timor-Leste that competes globally.</p>
+        </details>
+        <details class="bg-gray-800 rounded-md p-4 cursor-pointer hover:shadow-md transition" :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <summary class="text-4xl font-semibold text-orange-400">Mission</summary>
+          <ul class="mt-2 list-disc list-inside space-y-1">
+            <li>Developing talented players through professional training.</li>
+            <li>Provide a positive and supportive environment for all members.</li>
+            <li>Be a role model in sportmanship and integrity in the gaming world.</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- Nilai Nilai -->
+    <section data-aos="fade-up" data-aos-delay="100" class="mb-16">
+      <h2 class="text-4xl font-bold text-orange-500 mb-6 text-center">Team Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition transform duration-300 hover:scale-105"
+             :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <h3 class="text-xl font-semibold text-orange-400">Solidarity</h3>
+          <p class="mt-2">We support each other and grow together as a famili.</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition transform duration-300 hover:scale-105"
+             :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <h3 class="text-xl font-semibold text-orange-400">Sportmanship</h3>
+          <p class="mt-2">Play fair and respect your opponent in every <math></math>.</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition transform duration-300 hover:scale-105"
+             :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg_gray-800 text-white'">
+          <h3 class="text-xl font-semibold text-orange-400">Dedication</h3>
+          <p class="mt-2">High commitment to training and competition.</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-lg hover:shadow-orange-500 transition transform duration-300 hover:scale-105"
+             :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <h3 class="text-xl font-semibold text-orange-400">Commitment</h3>
+          <p class="mt-2">Maintaining integrity and passion in the long term.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="text-3xl font-bold text-orange-500 mb-6">What Do Our Players Say?</h2>
+      <blockquote class="p-6 rounded-lg italic shadow-md"
+                  :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'" >
+        “This team is not just a place to play, but a home to grow.”  
+        <br /><span class="mt-2 block font-bold text-orange-400">— Mape, Coach MLBB</span>
+      </blockquote>
+    </section>
+
+   <!-- Galeri Tim -->
+<section class="mb-16" data-aos="fade-up">
+  <h2 class="text-3xl font-bold text-orange-500 mb-6 text-center">Team Gallery</h2>
+
+  <div x-data="{ 
+      current: 0, 
+      images: [
+        'galeri1.jpeg', 'galeri2.jpeg', 'galeri3.jpeg',
+        'galeri4.jpeg', 'galeri5.jpeg', 'galeri6.jpeg',
+        'galeri7.jpeg', 'galeri8.jpeg', 'galeri9.jpeg',
+        'galeri10.jpeg', 'galeri11.jpeg', 'galeri12.jpeg',
+        'galeri13.jpeg', 'galeri14.jpeg', 'galeri15.jpeg',
+        'galeri17.jpeg', 'galeri18.jpeg', 'galeri19.jpeg'
+      ] 
+    }" class="relative w-full max-w-4xl mx-auto">
+
+    <!-- Gambar -->
+    <div class="overflow-hidden rounded-lg shadow-lg">
+      <template x-for="(img, i) in images" :key="i">
+        <img 
+          x-show="current === i" 
+          :src="img" 
+          class="w-full object-contain max-h-[500px] transition duration-500" 
+          loading="lazy"
+        />
+      </template>
+    </div>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between mt-4">
+      <button @click="current = (current === 0 ? images.length - 1 : current - 1)"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+        Prev
+      </button>
+      <span class="text-orange-400 font-semibold self-center">
+        <span x-text="current + 1"></span> / <span x-text="images.length"></span>
+      </span>
+      <button @click="current = (current + 1) % images.length"
+              class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+        Next
+      </button>
+    </div>
+  </div>
+</section>
+
+
+    <!-- FAQ -->
+    <section class="mb-16 max-w-3xl mx-auto" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-orange-500 mb-6 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <details class="p-4 rounded hover:shadow-lg transition"
+                 :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <summary class="text-lg font-semibold text-orange-400">How to join the team?</summary>
+          <p class="mt-2">Fill out the application form on the recruitment page. We will contact you if you meet the criteria.</p>
+        </details>
+        <details class="p-4 rounded hover:shadow-lg transition"
+                 :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <summary class="text-lg font-semibold text-orange-400">Is this team open to all games?</summary>
+          <p class="mt-2">Currently we are active in several divisions: Mobile Legends, Valorant, PUBG Mobile, Free Fire, and CODM.</p>
+        </details>
+        <details class="p-4 rounded hover:shadow-lg transition"
+                 :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+          <summary class="text-lg font-semibold text-orange-400">Is there a fee to join?</summary>
+          <p class="mt-2">No, there is no fee. We are only looking for dedicated and serious players.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Form Join Recruitment -->
+    <section class="max-w-2xl mx-auto mb-16" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-orange-500 mb-6 text-center">Join Recruitment Form</h2>
+      <form class="space-y-4 p-6 rounded-lg"
+            :class="lightMode ? 'bg-gray-100 text-gray-900' : 'bg-gray-800 text-white'">
+        <div>
+          <label class="block mb-1">Full name</label>
+          <input type="text" required placeholder="Contoh: Andi Saputra"
+                 class="w-full p-2 rounded focus:outline-none"
+                 :class="lightMode ? 'bg-white border border-gray-300' : 'bg-gray-700 border border-gray-600'" />
+        </div>
+        <div>
+          <label class="block mb-1">Active Email</label>
+          <input type="email" required placeholder="you@example.com"
+                 class="w-full p-2 rounded focus:outline-none"
+                 :class="lightMode ? 'bg-white border border-gray-300' : 'bg-gray-700 border border-gray-600'" />
+        </div>
+        <div>
+          <label class="block mb-1">Division of Interest</label>
+          <select required class="w-full p-2 rounded focus:outline-none"
+                  :class="lightMode ? 'bg-white border border-gray-300' : 'bg-gray-700 border border-gray-600'">
+            <option>-- Select Divisions --</option>
+            <option>Mobile Legends</option>
+            <option>Valorant</option>
+            <option>PUBG Mobile</option>
+            <option>Free Fire</option>
+            <option>Call of Duty Mobile</option>
+          </select>
+        </div>
+        <button type="submit"
+                class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded transition">
+          Submit Registration
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer :class="lightMode ? 'bg-gray-100 text-gray-600' : 'bg-gray-800 text-gray-400'" class="p-4 text-center">
+    &copy; 2025 Team Beautiful Nightmare. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    // progress bar scroll
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    };
+  </script>
+
+</body>
+</html>
+
